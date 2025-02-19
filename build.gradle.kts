@@ -27,11 +27,15 @@ dependencies {
 
         bundledPlugin("org.jetbrains.plugins.terminal")
         bundledPlugin("Git4Idea")
+        bundledPlugin("com.intellij.java")  // ensure the Java plugin is available
+        testFramework(TestFrameworkType.Platform)
+        testFramework(TestFrameworkType.Plugin.Java)
     }
 }
 
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
 }
 
 intellijPlatform {

@@ -1,5 +1,6 @@
 package org.jetbrains.mcpserverplugin
 
+import com.example.AnnotateDocumentTool
 import com.intellij.openapi.extensions.ExtensionPointName
 import org.jetbrains.mcpserverplugin.git.GetVcsStatusTool
 
@@ -11,6 +12,7 @@ class McpToolManager {
             return buildList {
                 // Add built-in tools
                 addAll(getBuiltInTools())
+                addAll(javaTools())
                 // Add extension-provided tools
                 addAll(EP_NAME.extensionList)
             }
@@ -38,6 +40,10 @@ class McpToolManager {
             GetAllOpenFileTextsTool(),
             GetAllOpenFilePathsTool(),
             OpenFileInEditorTool(),
+        )
+
+        private fun javaTools(): List<AbstractMcpTool<*>> = listOf(
+            AnnotateDocumentTool()
         )
     }
 }
